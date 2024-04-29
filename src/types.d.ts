@@ -10,5 +10,6 @@ export interface CardProps {
     description: string;
     bgColor: string;
     image: string;
+    onClick: () => void;
   }
 

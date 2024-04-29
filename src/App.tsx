@@ -9,7 +9,11 @@ function App() {
 
   const currentCardData: TutorialData = data[step];
 
-  console.log(data)
+  function nextStep() {
+    if (step < data.length - 1) {
+      setStep(step + 1);
+    }
+  }
 
   return (
     <>
@@ -17,7 +21,9 @@ function App() {
         title={currentCardData.title}
         description={currentCardData.description}
         bgColor={currentCardData.bgColor}
-        image={currentCardData.image}  />
+        image={currentCardData.image}
+        onClick={nextStep}
+        />
     </>
   )
 }
