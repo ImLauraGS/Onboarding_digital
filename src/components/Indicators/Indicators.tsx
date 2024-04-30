@@ -1,4 +1,4 @@
-import { IndicatorProps } from "../../types"
+import { IndicatorsProps, IndicatorProps } from "../../types";
 import styled from 'styled-components';
 
 const Indicator = styled.div<IndicatorProps>`
@@ -9,15 +9,16 @@ const Indicator = styled.div<IndicatorProps>`
     background-color: ${({ active }) => (active ? 'blue' : 'gray')};
 `;
 
-export default function Indicators({ step, totalSteps, onClickIndicator }: IndicatorProps ) {
-
+const Indicators: React.FC<IndicatorsProps> = ({ step, totalSteps, onClickIndicator }) => {
     const indicators = Array.from({ length: totalSteps }, (_, index) => (
-      <Indicator 
-        key={index} 
-        active={index === step} 
-        onClick={() => onClickIndicator(index)} 
-      />
+        <Indicator
+            key={index}
+            active={step === index}
+            onClick={() => onClickIndicator(index)} 
+        />
     ));
-  
+
     return <>{indicators}</>;
 }
+
+export default Indicators;

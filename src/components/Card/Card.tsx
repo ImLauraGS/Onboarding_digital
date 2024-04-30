@@ -1,4 +1,4 @@
-import { CardProps, IndicatorProps } from "../../types"
+import { CardProps } from "../../types"
 import styled from 'styled-components';
 import data from '../../data/tutorial.json';
 import Indicators from "../Indicators/Indicators";

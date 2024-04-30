@@ -17,10 +17,15 @@ export interface CardProps {
     onClickIndicator: (index: number) => void; 
   }
 
-export interface IndicatorProps {
+  export interface IndicatorsProps {
     step: number;
     totalSteps: number;
-    active?: boolean;
-    onClickIndicator: (index: number) => void;
+    onClickIndicator: (index: number) => void; // Ensure onClickIndicator prop is included
+  }
+
+
+ export interface IndicatorProps {
+    active: boolean;
+    onClick: () => void; // Ensure onClick prop is included
   }
 
