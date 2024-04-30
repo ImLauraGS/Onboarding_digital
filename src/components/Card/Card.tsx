@@ -1,6 +1,7 @@
 import { CardProps } from "../../types"
 import styled from 'styled-components';
 import data from '../../data/tutorial.json';
+import Indicators from "../Indicators/Indicators";
 
 const Title = styled.h1`
   font-size: 1.2em;
@@ -40,7 +41,7 @@ const CardHeader = styled.div`
 const CardBody = styled.div`
     display: flex;
     flex-direction: column;
-    height: 16rem;
+    height: 17rem;
     justify-content: space-between;
     gap: 1.5rem;
     padding: 1rem;
@@ -73,11 +74,22 @@ const ContainerButtons = styled.div`
     justify-content: flex-end;
     align-items: center;
     align-content: center;
+    gap: 1rem;
     flex-wrap: wrap;
-    width: 100%;
+    width: 50%;
 `;
 
-export default function Card({ step, title, description, bgColor, image, onClick, onClickPrev }: CardProps) {
+const CardFooter = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+`;
+
+export default function Card({ totalSteps, step, title, description, bgColor, image, onClick, onClickPrev }: CardProps) {
   return (
         <CardContainer>
             <CardHeader
@@ -96,18 +108,21 @@ export default function Card({ step, title, description, bgColor, image, onClick
             <Description>
                 {description}
             </Description>
-            <ContainerButtons>
-            {step > 0 && (
-            <ButtonPrev onClick={onClickPrev}>
-                <img src="carbon_next-outline.svg" alt="arrow" style={{ transform: 'rotate(180deg)' }}/>
-            </ButtonPrev>
-            )}
-            {step < data.length - 1 && (
-            <ButtonNext onClick={onClick}>
-                <img src="carbon_next-outline.svg" alt="arrow"/>
-            </ButtonNext>
-            )}
-            </ContainerButtons>
+            <CardFooter>
+                <Indicators step={step} totalSteps={totalSteps} />
+                <ContainerButtons>
+                    {step > 0 && (
+                    <ButtonPrev onClick={onClickPrev}>
+                        <img src="carbon_next-outline.svg" alt="arrow" style={{ transform: 'rotate(180deg)' }}/>
+                    </ButtonPrev>
+                    )}
+                    {step < data.length - 1 && (
+                    <ButtonNext onClick={onClick}>
+                        <img src="carbon_next-outline.svg" alt="arrow"/>
+                    </ButtonNext>
+                    )}
+                </ContainerButtons>
+            </CardFooter>
         </CardBody>
     </CardContainer>  
   )

@@ -30,6 +30,7 @@ function App() {
         onClick={nextStep}
         onClickPrev={prevStep}
         step = {step}
+        totalSteps = {data.length}
         />
     </>
   )

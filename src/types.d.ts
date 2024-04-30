@@ -13,5 +13,12 @@ export interface CardProps {
     onClick: () => void;
     onClickPrev: () => void;
     step: number;
+    totalSteps: number;
+  }
+
+export interface IndicatorProps {
+    step: number;
+    totalSteps: number;
+    active?: boolean;
   }
 
