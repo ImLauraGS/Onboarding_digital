@@ -11,5 +11,7 @@ export interface CardProps {
     bgColor: string;
     image: string;
     onClick: () => void;
+    onClickPrev: () => void;
+    step: number;
   }
 

@@ -14,6 +14,11 @@ function App() {
       setStep(step + 1);
     }
   }
+  function prevStep() {
+    if (step > 0) {
+      setStep(step - 1);
+    }
+  }
 
   return (
     <>
@@ -23,6 +28,8 @@ function App() {
         bgColor={currentCardData.bgColor}
         image={currentCardData.image}
         onClick={nextStep}
+        onClickPrev={prevStep}
+        step = {step}
         />
     </>
   )

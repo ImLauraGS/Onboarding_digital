@@ -1,5 +1,6 @@
 import { CardProps } from "../../types"
 import styled from 'styled-components';
+import data from '../../data/tutorial.json';
 
 const Title = styled.h1`
   font-size: 1.2em;
@@ -30,6 +31,7 @@ const CardHeader = styled.div`
     justify-content: center;
     align-items: center;
     width: auto;
+    height: 18rem;
     padding: 5rem 2rem;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
@@ -38,6 +40,8 @@ const CardHeader = styled.div`
 const CardBody = styled.div`
     display: flex;
     flex-direction: column;
+    height: 16rem;
+    justify-content: space-between;
     gap: 1.5rem;
     padding: 1rem;
 `;
@@ -48,7 +52,15 @@ const Description = styled.p`
     color: black;
 `;
 
-const ButtonNext = styled.button`
+const ButtonNext = styled.div`
+    border: none;
+    color: black;
+    font-size: 1em;
+    background-color: transparent;
+    cursor: pointer;
+`;
+
+const ButtonPrev = styled.div`
     border: none;
     color: black;
     font-size: 1em;
@@ -60,10 +72,12 @@ const ContainerButtons = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
     width: 100%;
 `;
 
-export default function Card({ title, description, bgColor, image, onClick }: CardProps) {
+export default function Card({ step, title, description, bgColor, image, onClick, onClickPrev }: CardProps) {
   return (
         <CardContainer>
             <CardHeader
@@ -83,14 +97,18 @@ export default function Card({ title, description, bgColor, image, onClick }: Ca
                 {description}
             </Description>
             <ContainerButtons>
-                <ButtonNext
-                    type="button"
-                    onClick={onClick}>
-                    <img src="carbon_next-outline.svg" alt="arrow" />
-                </ButtonNext>
+            {step > 0 && (
+            <ButtonPrev onClick={onClickPrev}>
+                <img src="carbon_next-outline.svg" alt="arrow" style={{ transform: 'rotate(180deg)' }}/>
+            </ButtonPrev>
+            )}
+            {step < data.length - 1 && (
+            <ButtonNext onClick={onClick}>
+                <img src="carbon_next-outline.svg" alt="arrow"/>
+            </ButtonNext>
+            )}
             </ContainerButtons>
         </CardBody>
-        
     </CardContainer>  
   )
 }
