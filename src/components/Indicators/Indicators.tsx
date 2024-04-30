@@ -9,11 +9,15 @@ const Indicator = styled.div<IndicatorProps>`
     background-color: ${({ active }) => (active ? 'blue' : 'gray')};
 `;
 
-export default function Indicators({ step, totalSteps }: IndicatorProps) {
+export default function Indicators({ step, totalSteps, onClickIndicator }: IndicatorProps ) {
 
-  const indicators = Array.from({ length: totalSteps }, (_, index) => (
-    <Indicator key={index} active={index === step} step={step} totalSteps={totalSteps}/>
-  ));
-
-  return <>{indicators}</>;
+    const indicators = Array.from({ length: totalSteps }, (_, index) => (
+      <Indicator 
+        key={index} 
+        active={index === step} 
+        onClick={() => onClickIndicator(index)} 
+      />
+    ));
+  
+    return <>{indicators}</>;
 }

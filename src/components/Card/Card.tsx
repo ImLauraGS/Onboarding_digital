@@ -1,4 +1,4 @@
-import { CardProps } from "../../types"
+import { CardProps, IndicatorProps } from "../../types"
 import styled from 'styled-components';
 import data from '../../data/tutorial.json';
 import Indicators from "../Indicators/Indicators";
@@ -89,7 +89,7 @@ const CardFooter = styled.div`
     border-bottom-right-radius: inherit;
 `;
 
-export default function Card({ totalSteps, step, title, description, bgColor, image, onClick, onClickPrev }: CardProps) {
+export default function Card({ totalSteps, step, title, description, bgColor, image, onClick, onClickPrev, onClickIndicator }: CardProps) {
   return (
         <CardContainer>
             <CardHeader
@@ -109,7 +109,11 @@ export default function Card({ totalSteps, step, title, description, bgColor, im
                 {description}
             </Description>
             <CardFooter>
-                <Indicators step={step} totalSteps={totalSteps} />
+            <Indicators 
+          step={step} 
+          totalSteps={totalSteps} 
+          onClickIndicator={onClickIndicator} 
+        />
                 <ContainerButtons>
                     {step > 0 && (
                     <ButtonPrev onClick={onClickPrev}>

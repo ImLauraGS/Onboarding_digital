@@ -14,11 +14,13 @@ export interface CardProps {
     onClickPrev: () => void;
     step: number;
     totalSteps: number;
+    onClickIndicator: (index: number) => void; 
   }
 
 export interface IndicatorProps {
     step: number;
     totalSteps: number;
     active?: boolean;
+    onClickIndicator: (index: number) => void;
   }
 

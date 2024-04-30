@@ -20,18 +20,23 @@ function App() {
     }
   }
 
+  function handleClickIndicator(index: number) {
+    setStep(index);
+  }
+
   return (
     <>
-      <Card 
-        title={currentCardData.title}
-        description={currentCardData.description}
-        bgColor={currentCardData.bgColor}
-        image={currentCardData.image}
-        onClick={nextStep}
-        onClickPrev={prevStep}
-        step = {step}
-        totalSteps = {data.length}
-        />
+          <Card 
+      title={currentCardData.title}
+      description={currentCardData.description}
+      bgColor={currentCardData.bgColor}
+      image={currentCardData.image}
+      onClick={nextStep}
+      onClickPrev={prevStep}
+      step={step}
+      totalSteps={data.length}
+      onClickIndicator={handleClickIndicator} 
+    />
     </>
   )
 }
