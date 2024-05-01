@@ -56,7 +56,7 @@ ENGLISH V.
 
 This project is part of a series of sprints carried out at IT Academy - Barcelona Activa.
 
-This Sprint corresponds to 04.
+This Sprint corresponds to 05.
 
 Objectives:
 
